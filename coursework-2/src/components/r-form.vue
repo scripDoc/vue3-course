@@ -22,7 +22,16 @@
 <script>
 export default {
   name: 'RForm',
-  emits: ['add'],
+  emits: {
+    add({ blockType, content }) {
+      if (blockType && content) {
+        return true
+      } else {
+        console.warn('Invalid block values')
+        return false
+      }
+    }
+  },
   data: () => ({
     blockType: 'title',
     content: ''
